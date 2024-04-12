@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { DatePicker } from "./DatePicker";
+import { Box, Stack } from "@mui/material";
 
-function App() {
+export const App = () => {
+  const [selected, setSelected] = React.useState<null | Date>(null);
+  const onChangeDateHandler = (date: Date | null) => {
+    setSelected(date);
+    console.log("date", date);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Stack>
+      <Box sx={{ width: "360px" }}>
+        <DatePicker onChange={onChangeDateHandler} selected={selected} />
+      </Box>
+    </Stack>
   );
-}
-
-export default App;
+};
